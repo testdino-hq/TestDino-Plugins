@@ -89,7 +89,7 @@ The plugin's Claude Code manifest lives in [`.claude-plugin/plugin.json`](./.cla
 
 ```
 /plugin marketplace add NandiniMonpara/TestDino-Plugins
-/plugin install testdino@NandiniMonpara/TestDino-Plugins
+/plugin install testdino@testdino-plugins
 ```
 
 ### Option C — Load locally for development

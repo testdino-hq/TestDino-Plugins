@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "testdino": {
+      "type": "http",
       "url": "https://mcp.testdino.com"
     }
   }

@@ -88,8 +88,8 @@ The plugin's Claude Code manifest lives in [`.claude-plugin/plugin.json`](./.cla
 ### Option B — Install directly from this repo
 
 ```
-/plugin marketplace add NandiniMonpara/TestDino-Cursor-Plugin
-/plugin install testdino@NandiniMonpara/TestDino-Cursor-Plugin
+/plugin marketplace add NandiniMonpara/TestDino-Plugins
+/plugin install testdino@NandiniMonpara/TestDino-Plugins
 ```
 
 ### Option C — Load locally for development

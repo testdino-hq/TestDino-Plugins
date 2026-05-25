@@ -1,6 +1,6 @@
-# TestDino Plugin for Cursor
+# TestDino Plugin 
 
-This repository contains the configuration needed to integrate the TestDino Model Context Protocol (MCP) server with Cursor. The plugin connects Cursor to TestDino's hosted remote MCP server so agents can inspect test runs, debug failing or flaky test cases, manage manual test assets, work with releases and sessions, and run TestDino audits through natural language.
+This repository contains the configuration needed to integrate the TestDino Model Context Protocol (MCP) server with AI coding agents such as Claude Code, Cursor, and Codex. The plugin connects your AI agent to TestDino's hosted remote MCP server so agents can inspect test runs, debug failing or flaky test cases, manage manual test assets, work with releases and sessions, and run TestDino audits through natural language.
 
 ## Features
 
@@ -26,13 +26,13 @@ Before setting up the TestDino MCP server, ensure you have:
 - Access to a TestDino workspace
 - A TestDino account you can authorize during the connect flow
 
-## Installation Instructions for Cursor
+## Installation Instructions
 
-Follow these steps to configure the TestDino MCP server in Cursor.
+Follow these steps to configure the TestDino MCP server in your AI agent (Claude Code, Cursor, Codex, or another MCP-compatible client).
 
 ### Step 1: Install the plugin
 
-Install or load the TestDino plugin in Cursor.
+Install or load the TestDino plugin in your AI agent.
 
 ### Step 2: Use the hosted TestDino MCP server
 
@@ -50,16 +50,16 @@ The plugin uses the hosted remote MCP server in [mcp.json](./mcp.json):
 
 ### Step 3: Connect and authorize
 
-When AI Agent prompts you to connect the TestDino MCP server, complete the authorization flow with your TestDino account.
+When your AI agent prompts you to connect the TestDino MCP server, complete the authorization flow with your TestDino account.
 
 During authorization, you can:
 
 - generate a new Personal Access Token with the scopes you need
 - or use an existing `tpu_` token
 
-### Step 4: Reload Cursor if needed
+### Step 4: Reload your AI agent if needed
 
-If AI Agent asks for a reload after enabling the server, reload the window.
+If your AI agent asks for a reload after enabling the server, reload the window or restart the client.
 
 ### Step 5: Start a new chat
 
@@ -80,7 +80,7 @@ This should return:
 
 ## Usage Examples
 
-Once configured, you can interact with TestDino through Cursor using natural language:
+Once configured, you can interact with TestDino through your AI agent using natural language:
 
 - Connection check: `Use the TestDino connector. Call health and tell me which projects I have access to.`
 - Project discovery: `Show my TestDino projects`

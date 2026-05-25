@@ -1,42 +1,22 @@
-# TestDino Plugin 
+<!--
+  Badges: replace the placeholder URLs/paths with your real ones.
+  shields.io renders these; the links should point at the matching source.
+-->
 
-This repository contains the configuration needed to integrate the TestDino Model Context Protocol (MCP) server with AI coding agents such as Claude Code, Cursor, and Codex. The plugin connects your AI agent to TestDino's hosted remote MCP server so agents can inspect test runs, debug failing or flaky test cases, manage manual test assets, work with releases and sessions, and run TestDino audits through natural language.
+[![Docs](https://img.shields.io/badge/docs-testdino.com-2563eb)](https://docs.testdino.com)
+[![MCP](https://img.shields.io/badge/MCP-remote-6366f1)](https://docs.testdino.com/mcp/remote)
+[![Playwright](https://img.shields.io/badge/Playwright-ready-2EAD33?logo=playwright)](https://playwright.dev)
+<!-- TODO: add a license badge once a LICENSE file exists in this repo -->
 
-## Features
+# TestDino Plugins
 
-The TestDino MCP server provides the following capabilities:
+Official plugins and integrations for [TestDino](https://app.testdino.com) — connect Playwright, CI/CD, and AI coding agents to your test data through the TestDino MCP server. Inspect runs, debug flaky tests, and manage manual testing in natural language.
 
-- Connection and access checks: validate access and discover organizations and projects
-- Test run analysis: list test runs, inspect run details, and review failures across branches, commits, authors, environments, and time ranges
-- Test case debugging: inspect test case details, historical failures, retries, artifacts, and debugging context
-- Manual test management: list, create, and update manual test cases and suites
-- Releases: list, inspect, create, and update releases or milestones
-- Manual runs: list, inspect, create, and update manual runs, plus inspect and update per-case run results
-- Exploratory sessions: list, inspect, create, and update exploratory testing sessions
-- Audit workflows: run the TestDino audit flow for Playwright test code
+> **Who is this for?** Teams running Playwright (or other automated suites) who want their CI results, flaky-test history, and manual test assets reachable from AI agents like Claude Code, Cursor, and Codex — without leaving the editor.
 
-## MCP Server
+## Quick Start
 
-The plugin includes the [Testdino MCP server](https://github.com/testdino-hq/testdino-mcp), giving agents tool access to the full Testdino API.
-
-## Prerequisites
-
-Before setting up the TestDino MCP server, ensure you have:
-
-- Access to a TestDino workspace
-- A TestDino account you can authorize during the connect flow
-
-## Installation Instructions
-
-Follow these steps to configure the TestDino MCP server in your AI agent (Claude Code, Cursor, Codex, or another MCP-compatible client).
-
-### Step 1: Install the plugin
-
-Install or load the TestDino plugin in your AI agent.
-
-### Step 2: Use the hosted TestDino MCP server
-
-The plugin uses the hosted remote MCP server in [mcp.json](./mcp.json):
+Add the hosted remote MCP server to your AI agent's MCP config:
 
 ```json
 {
@@ -48,80 +28,82 @@ The plugin uses the hosted remote MCP server in [mcp.json](./mcp.json):
 }
 ```
 
-### Step 3: Connect and authorize
+Reload the client, start a **new chat**, then verify access:
 
-When your AI agent prompts you to connect the TestDino MCP server, complete the authorization flow with your TestDino account.
+```text
+Use the TestDino connector. Call health and tell me which projects I have access to.
+```
 
-During authorization, you can:
+You should get back your identity, connector scope, and the `projectId` values you can use in follow-up prompts.
 
-- generate a new Personal Access Token with the scopes you need
-- or use an existing `tpu_` token
+## Plugins & Integrations
 
-### Step 4: Reload your AI agent if needed
+| Integration  | Description                                  | Repository                                                              | Status |
+| ------------ | -------------------------------------------- | ----------------------------------------------------------------------- | ------ |
+| testdino-mcp | Remote MCP server for AI coding agents       | [testdino-hq/testdino-mcp](https://github.com/testdino-hq/testdino-mcp) | Stable |
+<!-- TODO: add rows for any Playwright reporter / CI integration repos once their URLs and status are confirmed -->
 
-If your AI agent asks for a reload after enabling the server, reload the window or restart the client.
+## What You Can Do
 
-### Step 5: Start a new chat
+- **Connection & access** — validate access, discover organizations and projects
+- **Test run analysis** — list runs and review failures by branch, commit, author, environment, and time range
+- **Test case debugging** — inspect details, historical failures, retries, and artifacts
+- **Manual testing** — create and update manual test cases, suites, and runs (including per-case results)
+- **Releases** — list, inspect, create, and update releases or milestones
+- **Exploratory sessions** — create and track exploratory testing sessions
+- **Audits** — run the TestDino audit flow on Playwright test code
 
-Open a new chat after connecting so the TestDino tools are available in that conversation.
+## Supported Integrations
 
-## Verify the Connection
+- Playwright
+- GitHub Actions / CI/CD pipelines
+- MCP-compatible AI agents (Claude Code, Cursor, Codex)
 
-Open a new chat and ask:
+## Compatibility
 
-`Use the TestDino connector. Call health and tell me which projects I have access to.`
-
-This should return:
-
-- your user identity
-- connector scope
-- organizations and projects you can access
-- one or more `projectId` values for follow-up prompts
+| Component             | Requirement                                  |
+| --------------------- | -------------------------------------------- |
+| AI agent              | Any MCP-compatible client                    |
+| TestDino account      | Workspace access with a project              |
+| Transport             | Remote MCP over HTTPS (`mcp.testdino.com`)   |
+<!-- TODO: pin client/version minimums (e.g. Claude Code >= x.y) once confirmed -->
 
 ## Usage Examples
 
-Once configured, you can interact with TestDino through your AI agent using natural language:
+```text
+Show test runs from the last hour
+List failed test cases from the latest run
+Find flaky tests in TestDino from the last 3 days
+Debug the failing test case "visual.spec.js" in TestDino
+Create a manual test case in TestDino for checkout
+List releases in TestDino for project xyz
+Mark TC-156 as passed in RUN-12
+Assign TC-156 in RUN-12 to alice@example.com
+Run a TestDino audit on this Playwright spec
+```
 
-- Connection check: `Use the TestDino connector. Call health and tell me which projects I have access to.`
-- Project discovery: `Show my TestDino projects`
-- Test run analysis: `Show test runs from the last hour`
-- Failure analysis: `List failed test cases from the latest run`
-- Flaky test debugging: `Find flaky tests in TestDino from the last 3 days`
-- Test case debugging: `Debug the failing test case "visual.spec.js" in TestDino`
-- Manual test management: `Create a manual test case in TestDino for checkout`
-- Releases: `List releases in TestDino for project xyz`
-- Release details: `Show me release MS-12 in TestDino`
-- Manual runs: `List manual runs for release MS-12 in TestDino`
-- Run test cases: `Show all test cases in run RUN-12`
-- Run case update: `Mark TC-156 as passed in RUN-12`
-- Run assignment: `Assign TC-156 in RUN-12 to alice@example.com`
-- Sessions: `Create an exploratory session for auth regression in TestDino`
-- Session update: `Update session SES-12 to under review`
-- Audit workflow: `Run a TestDino audit on this Playwright spec`
+## Ecosystem
 
-## Documentation & Resources
-
-- TestDino: `https://app.testdino.com`
-- Remote MCP Documentation: `https://docs.testdino.com/mcp/remote`
-- TestDino Documentation: `https://docs.testdino.com`
-- MCP Server Repository: `https://github.com/testdino-hq/testdino-mcp`
-
-## Notes & Limitations
-
-- Remote MCP flow: this plugin is configured for TestDino's hosted remote MCP server
-- OAuth-style connect flow: users authorize the connection instead of manually editing a PAT into `mcp.json`
-- New chat required: some clients attach MCP tools at chat creation, so start a new chat after connecting
-- Audit scope: the TestDino audit flow is intended for Playwright automated test code
+- **Product** — [app.testdino.com](https://app.testdino.com)
+- **Docs** — [docs.testdino.com](https://docs.testdino.com)
+- **Remote MCP guide** — [docs.testdino.com/mcp/remote](https://docs.testdino.com/mcp/remote)
+- **MCP server source** — [github.com/testdino-hq/testdino-mcp](https://github.com/testdino-hq/testdino-mcp)
 
 ## Troubleshooting
 
-- If authorization fails, make sure you are signing in with the correct TestDino account.
-- If the server connects but tools do not appear, start a new chat.
-- If project access is missing, reconnect with a token that has the correct scope.
+- **Authorization fails** — sign in with the correct TestDino account.
+- **Server connects but no tools appear** — start a new chat; some clients attach MCP tools only at chat creation.
+- **Project access missing** — reconnect with a token that has the correct scope.
 
-## Questions or Issues?
+## Contributing
 
-For questions about the TestDino MCP server or setup issues, please use the resources below:
+<!-- TODO: replace with the real workflow once defined. -->
 
-- TestDino Support: `support@testdino.com`
-- TestDino Documentation: `https://docs.testdino.com`
+1. Open an issue describing the change or bug.
+2. Fork, branch, and submit a pull request against `main`.
+3. Link related TestDino ecosystem repos in the PR description.
+
+## Support
+
+- Email — [support@testdino.com](mailto:support@testdino.com)
+- Docs — [docs.testdino.com](https://docs.testdino.com)

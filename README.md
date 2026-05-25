@@ -1,14 +1,6 @@
-# TestDino Plugin
+# TestDino Plugin for Cursor
 
-This repository ships the TestDino Model Context Protocol (MCP) integration as a plugin for **Claude Code**, **Cursor**, and **OpenAI Codex** — from a single codebase. The plugin connects your AI coding agent to TestDino's hosted remote MCP server so it can inspect test runs, debug failing or flaky test cases, manage manual test assets, work with releases and sessions, and run TestDino audits through natural language.
-
-Platform manifests:
-
-- Claude Code → [`.claude-plugin/`](./.claude-plugin/)
-- Cursor → [`.cursor-plugin/`](./.cursor-plugin/)
-- OpenAI Codex → [`.codex-plugin/`](./.codex-plugin/)
-
-Skills in [`skills/`](./skills/) are shared across all three platforms.
+This repository contains the configuration needed to integrate the TestDino Model Context Protocol (MCP) server with Cursor. The plugin connects Cursor to TestDino's hosted remote MCP server so agents can inspect test runs, debug failing or flaky test cases, manage manual test assets, work with releases and sessions, and run TestDino audits through natural language.
 
 ## Features
 
@@ -31,7 +23,6 @@ The plugin includes the [Testdino MCP server](https://github.com/testdino-hq/tes
 
 Before setting up the TestDino MCP server, ensure you have:
 
-- Claude Code, Cursor, or OpenAI Codex installed (any one or more)
 - Access to a TestDino workspace
 - A TestDino account you can authorize during the connect flow
 
@@ -59,7 +50,7 @@ The plugin uses the hosted remote MCP server in [mcp.json](./mcp.json):
 
 ### Step 3: Connect and authorize
 
-When Cursor prompts you to connect the TestDino MCP server, complete the authorization flow with your TestDino account.
+When AI Agent prompts you to connect the TestDino MCP server, complete the authorization flow with your TestDino account.
 
 During authorization, you can:
 
@@ -68,51 +59,11 @@ During authorization, you can:
 
 ### Step 4: Reload Cursor if needed
 
-If Cursor asks for a reload after enabling the server, reload the window.
+If AI Agent asks for a reload after enabling the server, reload the window.
 
 ### Step 5: Start a new chat
 
 Open a new chat after connecting so the TestDino tools are available in that conversation.
-
-## Installation Instructions for Claude Code
-
-The plugin's Claude Code manifest lives in [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json) and the MCP config in [`.mcp.json`](./.mcp.json).
-
-### Option A — Install from the community marketplace (after submission is approved)
-
-```
-/plugin marketplace add anthropics/claude-plugins-community
-/plugin install testdino@claude-community
-```
-
-### Option B — Install directly from this repo
-
-```
-/plugin marketplace add NandiniMonpara/TestDino-Plugins
-/plugin install testdino@testdino-plugins
-```
-
-### Option C — Load locally for development
-
-```
-claude --plugin-dir <path-to-this-repo>
-```
-
-After install, complete the OAuth-style connect flow to authorize the MCP server with your TestDino account, then start a new chat.
-
-## Installation Instructions for OpenAI Codex
-
-The plugin's Codex manifest lives in [`.codex-plugin/plugin.json`](./.codex-plugin/plugin.json).
-
-### Load locally for development
-
-```
-codex --plugin-dir <path-to-this-repo>
-```
-
-Confirm the TestDino tools are available within the Codex session, then connect with your TestDino PAT when prompted.
-
-> Marketplace submission for Codex is platform-dependent — see OpenAI's Codex docs for the current submission URL.
 
 ## Verify the Connection
 

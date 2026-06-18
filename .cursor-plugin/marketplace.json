@@ -1,0 +1,24 @@
+{
+  "name": "testdino-plugins",
+  "owner": {
+    "name": "TestDino",
+    "email": "support@testdino.com"
+  },
+  "metadata": {
+    "description": "Plugins for the TestDino test management platform — skills and remote MCP integration for Cursor."
+  },
+  "plugins": [
+    {
+      "name": "testdino",
+      "source": "./",
+      "description": "Use TestDino inside Cursor through the hosted remote MCP server to inspect test runs, debug failing test cases, manage manual tests, and run TestDino audits.",
+      "version": "1.0.0",
+      "author": {
+        "name": "TestDino",
+        "email": "support@testdino.com"
+      },
+      "logo": "assets/logo.png",
+      "category": "testing"
+    }
+  ]
+}

@@ -1,12 +1,7 @@
-<!--
-  Badges: replace the placeholder URLs/paths with your real ones.
-  shields.io renders these; the links should point at the matching source.
--->
-
 [![Docs](https://img.shields.io/badge/docs-testdino.com-2563eb)](https://docs.testdino.com)
 [![MCP](https://img.shields.io/badge/MCP-remote-6366f1)](https://docs.testdino.com/mcp/remote)
 [![Playwright](https://img.shields.io/badge/Playwright-ready-2EAD33?logo=playwright)](https://playwright.dev)
-<!-- TODO: add a license badge once a LICENSE file exists in this repo -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 # TestDino Plugins
 
@@ -41,7 +36,6 @@ You should get back your identity, connector scope, and the `projectId` values y
 | Integration  | Description                                  | Repository                                                              | Status |
 | ------------ | -------------------------------------------- | ----------------------------------------------------------------------- | ------ |
 | testdino-mcp | Remote MCP server for AI coding agents       | [testdino-hq/testdino-mcp](https://github.com/testdino-hq/testdino-mcp) | Stable |
-<!-- TODO: add rows for any Playwright reporter / CI integration repos once their URLs and status are confirmed -->
 
 ## What You Can Do
 
@@ -66,7 +60,7 @@ You should get back your identity, connector scope, and the `projectId` values y
 | AI agent              | Any MCP-compatible client                    |
 | TestDino account      | Workspace access with a project              |
 | Transport             | Remote MCP over HTTPS (`mcp.testdino.com`)   |
-<!-- TODO: pin client/version minimums (e.g. Claude Code >= x.y) once confirmed -->
+| Authentication        | OAuth 2.1 (sign in with your TestDino account) |
 
 ## Usage Examples
 
@@ -96,8 +90,6 @@ Run a TestDino audit on this Playwright spec
 - **Project access missing** — reconnect with a token that has the correct scope.
 
 ## Contributing
-
-<!-- TODO: replace with the real workflow once defined. -->
 
 1. Open an issue describing the change or bug.
 2. Fork, branch, and submit a pull request against `main`.

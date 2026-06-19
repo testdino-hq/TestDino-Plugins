@@ -31,6 +31,17 @@ Use the TestDino connector. Call health and tell me which projects I have access
 
 You should get back your identity, connector scope, and the `projectId` values you can use in follow-up prompts.
 
+## Install in Claude Code
+
+TestDino is packaged as a Claude Code plugin. Add the marketplace and install it:
+
+```text
+/plugin marketplace add testdino-hq/TestDino-Plugins
+/plugin install testdino@testdino-plugins
+```
+
+This loads the TestDino skills and the remote MCP server. Start a **new chat**, sign in when prompted, and the TestDino tools become available.
+
 ## Plugins & Integrations
 
 | Integration  | Description                                  | Repository                                                              | Status |
